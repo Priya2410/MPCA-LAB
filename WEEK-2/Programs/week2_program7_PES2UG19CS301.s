@@ -1,0 +1,8 @@
+.text
+MOV R0,#50
+MOV R1,R0,LSL #2
+ADD R0,R0,R1
+MOV R2,R0,LSL #3
+SUB R0,R2,R0
+SWI 0x11
+.end
