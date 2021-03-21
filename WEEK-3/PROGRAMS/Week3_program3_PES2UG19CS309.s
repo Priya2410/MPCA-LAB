@@ -1,0 +1,23 @@
+.data
+A: .word 10,2,11,1,6,3
+.text
+LDR R0,=A
+MOV R1,#6
+LDR R2,[R0],#4
+SUB R1,R1,#1
+LOOP:
+	CMP R2,#0
+	BEQ EXIT
+	LDR R3,[R0],#4
+	SUBS R4,R3,R2
+	BMI B
+	SUBS R1,R1,#1
+	BEQ EXIT
+	BNE LOOP
+B:
+	MOV R2,R3
+	SUBS R1,R1,#1
+	BEQ EXIT
+	BNE LOOP
+EXIT: SWI 0x11
+.end

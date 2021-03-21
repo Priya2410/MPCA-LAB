@@ -1,0 +1,15 @@
+.data
+num: .WORD 80000
+.text
+MOV R0,#0
+L1:ADD R0,R0,#1 
+SWI 0X201
+LDR R3,=num
+LDR R4,[R3]
+DELAY: CMP R4,#0
+SUBNE R4,R4,#1
+BNE DELAY
+CMP R0,#3
+BNE L1
+SWI 0X11
+.end
